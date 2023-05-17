@@ -1,8 +1,7 @@
 using System.Diagnostics;
 
-namespace kts.io.StrongStrings
+namespace ktsu.io.StrongStrings
 {
-
 	public interface IStrongString : IEquatable<IStrongString>
 	{
 		string Value { get; init; }
