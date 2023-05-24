@@ -32,9 +32,12 @@ jobs:
       run: dotnet build --configuration Debug
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Create the package
-      run: dotnet pack --configuration Release --output . -p:RepositoryUrl=${{ github.repositoryUrl }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=https://github.com/${{ github.repository }}
+    - name: Create the package for github
+      run: dotnet pack --configuration Release --output . -p:RepositoryUrl=${{ github.repositoryUrl }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=${{ github.server_url }}/${{ github.repository }}
     - name: Publish the package to github
       run: dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
+    - name: Create the package for nuget
+      run: dotnet pack --configuration Release --output . -p:RepositoryUrl=${{ github.server_url }}/${{ github.repository }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=${{ github.server_url }}/${{ github.repository }}
     - name: Publish the package to nuget
       run: dotnet nuget push *.nupkg --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json
+      
