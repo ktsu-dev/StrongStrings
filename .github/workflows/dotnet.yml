@@ -22,15 +22,15 @@ jobs:
         dotnet-version: 7.0.x
         source-url: https://nuget.pkg.github.com/ktsu-io/index.json
       env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        NUGET_AUTH_TOKEN: ${{ github.token }}
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release
+      run: dotnet build
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Create the package
-      run: dotnet pack --configuration Release -p:RepositoryCommit=${{ github.sha }}
+      run: dotnet pack -p:RepositoryUrl=${{ github.repositoryUrl }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=https://github.com/${{ github.repository }}
     - name: Publish the package to GPR
-      run: dotnet nuget push **/Release/*.nupkg --skip-duplicate
+      run: dotnet nuget push **/Release/*.nupkg --skip-duplicate --api-key ${{ github.token }}
       
