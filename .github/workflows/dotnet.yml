@@ -26,7 +26,6 @@ jobs:
         source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
       env:
         NUGET_AUTH_TOKEN: ${{ github.token }}
-        OutDir: ${{ github.workspace}}/out
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -34,7 +33,8 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Create the package
-      run: dotnet pack --configuration Release --output ${{ github.workspace}}/out -p:RepositoryUrl=${{ github.repositoryUrl }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=https://github.com/${{ github.repository }}
-    - name: Publish the package
-      run: dotnet nuget push ${{ github.workspace}}/out/*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
-
+      run: dotnet pack --configuration Release --output . -p:RepositoryUrl=${{ github.repositoryUrl }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=https://github.com/${{ github.repository }}
+    - name: Publish the package to github
+      run: dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
+    - name: Publish the package to nuget
+      run: dotnet nuget push *.nupkg --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json
