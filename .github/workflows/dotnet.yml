@@ -32,5 +32,5 @@ jobs:
     - name: Create the package
       run: dotnet pack -p:RepositoryUrl=${{ github.repositoryUrl }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=https://github.com/${{ github.repository }}
     - name: Publish the package to GPR
-      run: dotnet nuget push ./${{ github.event.repository.name }}/bin/Release/*.nupkg --skip-duplicate --api-key ${{ github.token }}
+      run: dotnet nuget push bin/Release/*.nupkg --skip-duplicate --api-key ${{ github.token }}
       
