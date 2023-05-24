@@ -33,7 +33,4 @@ jobs:
     - name: Create the package
       run: dotnet pack --configuration Release --output ${{ github.workspace}}/out -p:RepositoryUrl=${{ github.repositoryUrl }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=https://github.com/${{ github.repository }}
     - name: Publish the package
-      run: |
-        foreach($file in (Get-ChildItem "${{ github.workspace}}/out" -Recurse -Include *.nupkg)) {
-            dotnet nuget push $file --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate --api-key ${{ github.token }}
-        }
+      run: dotnet nuget push ${{ github.workspace}}/out/*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate --api-key ${{ github.token }}
