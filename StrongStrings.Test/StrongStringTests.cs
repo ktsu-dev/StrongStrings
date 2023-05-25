@@ -383,6 +383,5 @@ namespace ktsu.io.StrongStrings.Test
 			Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.InvariantCulture));
 			Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.InvariantCultureIgnoreCase));
 		}
-
 	}
 }
