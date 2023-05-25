@@ -16,8 +16,9 @@ namespace ktsu.io.StrongStrings
 
 		//object Clone(); // REMOVED: we'll be using records, which are immutable, so can't be cloned
 		new int CompareTo(object value);
-		int CompareTo(string strB);
+		//int CompareTo(string strB); // REMOVED: this conflicts with IComparable<IString>.CompareTo which can implicitly convert to string anyway
 		bool Contains(string value);
+		bool Contains(string value, StringComparison comparisonType);
 		void CopyTo(int sourceIndex, char[] destination, int destinationIndex, int count);
 		bool EndsWith(string value);
 		bool EndsWith(string value, bool ignoreCase, CultureInfo culture);
