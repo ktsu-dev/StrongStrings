@@ -15,7 +15,7 @@ namespace ktsu.io.StrongStrings.Test
 
 	public abstract class TrueValidator : IStringValidator
 	{
-		public static bool IsValid(IStrongString strongString)
+		public static bool IsValid(AnyStrongString strongString)
 		{
 			return true;
 		}
@@ -23,7 +23,7 @@ namespace ktsu.io.StrongStrings.Test
 
 	public abstract class FalseValidator : IStringValidator
 	{
-		public static bool IsValid(IStrongString strongString)
+		public static bool IsValid(AnyStrongString strongString)
 		{
 			return false;
 		}
@@ -31,7 +31,7 @@ namespace ktsu.io.StrongStrings.Test
 
 	public abstract class NonEmptyValidator : IStringValidator
 	{
-		public static bool IsValid(IStrongString strongString)
+		public static bool IsValid(AnyStrongString strongString)
 		{
 			if (strongString is null)
 			{

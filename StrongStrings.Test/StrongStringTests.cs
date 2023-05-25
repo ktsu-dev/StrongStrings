@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using ktsu.io.StrongStrings.Internal;
 
 namespace ktsu.io.StrongStrings.Test
 {
@@ -42,7 +41,7 @@ namespace ktsu.io.StrongStrings.Test
 			{
 				WeakString = Yeet,
 			};
-			Assert.IsInstanceOfType<IStrongString>(strongString);
+			Assert.IsInstanceOfType<AnyStrongString>(strongString);
 			Assert.AreEqual(Yeet, strongString.WeakString);
 		}
 
@@ -88,12 +87,13 @@ namespace ktsu.io.StrongStrings.Test
 		[TestMethod]
 		public void TestToDerivedClassFromCharArray()
 		{
-			Assert.AreEqual(StrongYeet, StrongString<StrongStringDerivedClass>.ToStrongString(Yeet.ToCharArray()));
+			Assert.AreEqual(StrongYeet, StrongString.ToStrongString<StrongStringDerivedClass>(Yeet.ToCharArray()));
 		}
+
 		[TestMethod]
 		public void TestToDerivedClassFromString()
 		{
-			Assert.AreEqual(StrongYeet, StrongString<StrongStringDerivedClass>.ToStrongString(Yeet));
+			Assert.AreEqual(StrongYeet, StrongString.ToStrongString<StrongStringDerivedClass>(Yeet));
 		}
 
 		[TestMethod]
@@ -226,17 +226,10 @@ namespace ktsu.io.StrongStrings.Test
 		[TestMethod]
 		public void TestToCharArray()
 		{
-			Assert.IsTrue(StrongString.ToCharArray(StrongYeet).SequenceEqual(Yeet.ToCharArray()));
+			Assert.IsTrue(AnyStrongString.ToCharArray(StrongYeet).SequenceEqual(Yeet.ToCharArray()));
 			Assert.IsTrue(StrongYeet.ToCharArray().SequenceEqual(Yeet.ToCharArray()));
-			Assert.IsTrue(StrongString.ToCharArray(null!).Length == 0);
+			Assert.IsTrue(AnyStrongString.ToCharArray(null!).Length == 0);
 		}
-
-		[TestMethod]
-		public void TestAsIStrongString()
-		{
-			Assert.IsNotNull(StrongYeet.AsIStrongString);
-		}
-
 
 		[TestMethod]
 		public void TestFromCharArray()
