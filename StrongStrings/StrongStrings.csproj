@@ -3,8 +3,14 @@
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Generated\StrongString.log">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StrongString.tt</DependentUpon>
+    </None>
     <None Update="Generated\StrongString.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StrongString.log</LastGenOutput>
     </None>
   </ItemGroup>
 </Project>
