@@ -1,0 +1,12 @@
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#+
+public void SaveTemplateOutput(string outputFileName)
+{
+	string outputDir = Path.GetDirectoryName(Host.TemplateFile);
+	string outputFilePath = Path.Combine(outputDir, outputFileName);
+	File.WriteAllText(outputFilePath, this.GenerationEnvironment.ToString());
+	this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+}
+#>

@@ -1,15 +1,11 @@
-namespace ktsu.io.StrongStrings
-{
-	public interface IValidator
-	{
-		static abstract bool IsValid(AnyStrongString strongString);
-	}
+namespace ktsu.io.StrongStrings;
 
-	public abstract record class NoValidator : IValidator
-	{
-		public static bool IsValid(AnyStrongString strongString)
-		{
-			return true;
-		}
-	}
+public interface IValidator
+{
+	static abstract bool IsValid(AnyStrongString? strongString);
+}
+
+public abstract record NoValidator : IValidator
+{
+	public static bool IsValid(AnyStrongString? strongString) { return true; }
 }
