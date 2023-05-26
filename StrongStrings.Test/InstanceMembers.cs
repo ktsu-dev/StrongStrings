@@ -7,130 +7,12 @@ namespace ktsu.io.StrongStrings.Test
 	[SuppressMessage("Globalization", "CA1304:Specify CultureInfo", Justification = "Disabled for test")]
 	[SuppressMessage("Globalization", "CA1311:Specify a culture or use an invariant version", Justification = "Disabled for test")]
 	[SuppressMessage("Globalization", "CA1307:Specify StringComparison for clarity", Justification = "Disabled for test")]
-	public class StrongStringTests
+	public class InstanceMembers
 	{
 		private const string Yeet = nameof(Yeet);
 		private const string Yote = nameof(Yote);
-		private static StrongStringDerivedClass StrongYeet
-		{
-			get
-			{
-				return (StrongStringDerivedClass)Yeet;
-			}
-		}
-
-		private static StrongStringDerivedClass StrongYote
-		{
-			get
-			{
-				return (StrongStringDerivedClass)Yote;
-			}
-		}
-
-		[TestMethod]
-		public void TestCreateEmpty()
-		{
-			StrongStringDerivedClass strongString = new();
-			Assert.AreEqual(string.Empty, strongString.WeakString);
-		}
-
-		[TestMethod]
-		public void TestCreateWithValue()
-		{
-			StrongStringDerivedClass strongString = new()
-			{
-				WeakString = Yeet,
-			};
-			Assert.IsInstanceOfType<AnyStrongString>(strongString);
-			Assert.AreEqual(Yeet, strongString.WeakString);
-		}
-
-		[TestMethod]
-		public void TestCreateWithNull()
-		{
-			_ = Assert.ThrowsException<ArgumentNullException>(() =>
-			{
-				var strongString = (StrongStringDerivedClass)(string?)null;
-			});
-		}
-
-		[TestMethod]
-		public void TestOpExplicitString()
-		{
-			Assert.AreEqual(Yeet, (string)StrongYeet);
-		}
-
-		[TestMethod]
-		public void TestOpExplicitCharArray()
-		{
-			Assert.IsTrue(((char[])StrongYeet).SequenceEqual(Yeet.ToCharArray()));
-		}
-
-		[TestMethod]
-		public void TestOpImplicitString()
-		{
-			string stringYeet = StrongYeet;
-			Assert.AreEqual(Yeet, stringYeet);
-		}
-
-		[TestMethod]
-		public void TestOpImplicitCharArray()
-		{
-			char[] charsYeet = StrongYeet;
-			Assert.IsTrue(charsYeet.SequenceEqual(Yeet.ToCharArray()));
-
-			StrongStringDerivedClass confidentlyNull = null!;
-			char[] charsNull = confidentlyNull;
-			Assert.IsTrue(charsNull.Length == 0);
-		}
-
-		[TestMethod]
-		public void TestToDerivedClassFromCharArray()
-		{
-			Assert.AreEqual(StrongYeet, StrongString.ToStrongString<StrongStringDerivedClass>(Yeet.ToCharArray()));
-		}
-
-		[TestMethod]
-		public void TestToDerivedClassFromString()
-		{
-			Assert.AreEqual(StrongYeet, StrongString.ToStrongString<StrongStringDerivedClass>(Yeet));
-		}
-
-		[TestMethod]
-		public void TestOpExplicitToDerivedClassFromCharArray()
-		{
-			Assert.AreEqual(StrongYeet, (StrongString<StrongStringDerivedClass>)Yeet.ToCharArray());
-		}
-
-		[TestMethod]
-		public void TestEquals()
-		{
-			var strongString0 = StrongYeet;
-			var strongString1 = StrongYeet;
-			var strongString2 = StrongYote;
-			Assert.IsTrue(strongString0.Equals(strongString1));
-			Assert.IsFalse(strongString0.Equals(strongString2));
-		}
-
-		[TestMethod]
-		public void TestOpEquals()
-		{
-			var strongString0 = StrongYeet;
-			var strongString1 = StrongYeet;
-			var strongString2 = StrongYote;
-			Assert.IsTrue(strongString0 == strongString1);
-			Assert.IsFalse(strongString0 == strongString2);
-		}
-
-		[TestMethod]
-		public void TestOpNotEquals()
-		{
-			var strongString0 = StrongYeet;
-			var strongString1 = StrongYeet;
-			var strongString2 = StrongYote;
-			Assert.IsFalse(strongString0 != strongString1);
-			Assert.IsTrue(strongString0 != strongString2);
-		}
+		private static StrongStringDerivedClass StrongYeet => (StrongStringDerivedClass)Yeet;
+		private static StrongStringDerivedClass StrongYote => (StrongStringDerivedClass)Yote;
 
 		[TestMethod]
 		public void TestGetHashCode()
@@ -173,6 +55,16 @@ namespace ktsu.io.StrongStrings.Test
 			Assert.IsFalse(new InvalidStrongString4().IsValid());
 			Assert.IsTrue(new ValidStrongString5().IsValid());
 			Assert.IsFalse(new InvalidStrongString5().IsValid());
+		}
+
+		[TestMethod]
+		public void TestEquals()
+		{
+			var strongString0 = StrongYeet;
+			var strongString1 = StrongYeet;
+			var strongString2 = StrongYote;
+			Assert.IsTrue(strongString0.Equals(strongString1));
+			Assert.IsFalse(strongString0.Equals(strongString2));
 		}
 
 		[TestMethod]
@@ -221,79 +113,6 @@ namespace ktsu.io.StrongStrings.Test
 		{
 			var strongString = StrongYeet;
 			Assert.AreEqual(Yeet.ToLower(), strongString.ToLower());
-		}
-
-		[TestMethod]
-		public void TestToCharArray()
-		{
-			Assert.IsTrue(AnyStrongString.ToCharArray(StrongYeet).SequenceEqual(Yeet.ToCharArray()));
-			Assert.IsTrue(StrongYeet.ToCharArray().SequenceEqual(Yeet.ToCharArray()));
-			Assert.IsTrue(AnyStrongString.ToCharArray(null!).Length == 0);
-		}
-
-		[TestMethod]
-		public void TestFromCharArray()
-		{
-			_ = Assert.ThrowsException<ArgumentNullException>(() => StrongString.FromCharArray<StrongStringDerivedClass>(null!));
-			Assert.AreEqual(Yeet, StrongString.FromCharArray<StrongStringDerivedClass>(Yeet.ToCharArray()).WeakString);
-		}
-
-		[TestMethod]
-		public void TestCompareTo()
-		{
-			Assert.IsTrue(StrongYeet.CompareTo(StrongYote) < 0);
-			Assert.IsTrue(StrongYote.CompareTo(StrongYeet) > 0);
-			Assert.IsTrue(StrongYeet.CompareTo(StrongYeet) == 0);
-		}
-
-		[TestMethod]
-		public void TestOpGreaterThan()
-		{
-			Assert.IsFalse(StrongYeet > StrongYote);
-			Assert.IsTrue(StrongYote > StrongYeet);
-			Assert.IsFalse(StrongYeet > StrongYeet);
-
-			Assert.IsFalse(null! > StrongYote);
-			Assert.IsTrue(StrongYeet > null!);
-		}
-
-		[TestMethod]
-		public void TestOpLessThan()
-		{
-			Assert.IsTrue(StrongYeet < StrongYote);
-			Assert.IsFalse(StrongYote < StrongYeet);
-			Assert.IsFalse(StrongYeet < StrongYeet);
-
-			Assert.IsTrue(null! < StrongYote);
-			Assert.IsFalse(StrongYeet < null!);
-		}
-
-		[TestMethod]
-		public void TestOpGreaterThanOrEqual()
-		{
-			Assert.IsFalse(StrongYeet >= StrongYote);
-			Assert.IsTrue(StrongYote >= StrongYeet);
-			Assert.IsTrue(StrongYeet >= StrongYeet);
-
-			Assert.IsFalse(null! >= StrongYote);
-			Assert.IsTrue(StrongYeet >= null!);
-		}
-
-		[TestMethod]
-		public void TestOpLessThanOrEqual()
-		{
-			Assert.IsTrue(StrongYeet <= StrongYote);
-			Assert.IsFalse(StrongYote <= StrongYeet);
-			Assert.IsTrue(StrongYeet <= StrongYeet);
-
-			Assert.IsTrue(null! <= StrongYote);
-			Assert.IsFalse(StrongYeet <= null!);
-		}
-
-		[TestMethod]
-		public void TestOpAdd()
-		{
-			Assert.AreEqual(StrongYeet + StrongYote, Yeet + Yote);
 		}
 
 		[TestMethod]
@@ -368,13 +187,21 @@ namespace ktsu.io.StrongStrings.Test
 			Assert.IsFalse(StrongYeet.Contains(Yote[1..3], StringComparison.InvariantCulture));
 			Assert.IsFalse(StrongYeet.Contains(Yote[1..3], StringComparison.InvariantCultureIgnoreCase));
 
-			Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!));
-			Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.Ordinal));
-			Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.OrdinalIgnoreCase));
-			Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.CurrentCulture));
-			Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.CurrentCultureIgnoreCase));
-			Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.InvariantCulture));
-			Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.InvariantCultureIgnoreCase));
+			_ = Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!));
+			_ = Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.Ordinal));
+			_ = Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.OrdinalIgnoreCase));
+			_ = Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.CurrentCulture));
+			_ = Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.CurrentCultureIgnoreCase));
+			_ = Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.InvariantCulture));
+			_ = Assert.ThrowsException<ArgumentNullException>(() => StrongYeet.Contains(null!, StringComparison.InvariantCultureIgnoreCase));
+		}
+
+		[TestMethod]
+		public void TestCompareTo()
+		{
+			Assert.IsTrue(StrongYeet.CompareTo(StrongYote) < 0);
+			Assert.IsTrue(StrongYote.CompareTo(StrongYeet) > 0);
+			Assert.IsTrue(StrongYeet.CompareTo(StrongYeet) == 0);
 		}
 	}
 }
