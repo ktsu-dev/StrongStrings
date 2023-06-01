@@ -1,3 +1,4 @@
+// Generated code. Do not modify.
 namespace ktsu.io.StrongStrings;
 
 public abstract record StrongStringAbstract<TDerived> : AnyStrongString<TDerived>

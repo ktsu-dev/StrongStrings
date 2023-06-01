@@ -1,9 +1,0 @@
-<#@ include file="MakeAbstract.ttinclude" once="true" #>
-<#@ include file="MakeConcrete.ttinclude" once="true" #>
-<#+ public void MakeClasses(string baseClassName, string derivedClassName)
-{
-	var rootNamespace = Host.ResolveAssemblyReference("$(RootNamespace)");
-	var abstractClassName = $"{derivedClassName}Abstract";
-	MakeAbstract(rootNamespace, baseClassName, abstractClassName);
-	MakeConcrete(rootNamespace, abstractClassName, derivedClassName);
-} #>

@@ -1,31 +1,29 @@
-<#@ include file="SaveTemplateOutput.ttinclude" once="true" #>
-<#+
-public void MakeAbstract(string fileNamespace, string baseClassName, string derivedClassName)
+﻿public string MakeAbstract(string fileNamespace, string baseClassName, string derivedClassName)
 {
-	this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
-#>
-namespace <#= fileNamespace #>;
+    return $$"""
+// Generated code. Do not modify.
+namespace {{ fileNamespace }};
 
-public abstract record <#= derivedClassName #><TDerived> : <#= baseClassName #><TDerived>
-	where TDerived : <#= derivedClassName #><TDerived>;
+public abstract record {{ derivedClassName }}<TDerived> : {{ baseClassName }}<TDerived>
+	where TDerived : {{ derivedClassName }}<TDerived>;
 
-public abstract record <#= derivedClassName #><TDerived, TValidator> : <#= baseClassName #><TDerived>
-	where TDerived : <#= derivedClassName #><TDerived, TValidator>
+public abstract record {{ derivedClassName }}<TDerived, TValidator> : {{ baseClassName }}<TDerived>
+	where TDerived : {{ derivedClassName }}<TDerived, TValidator>
 	where TValidator : ktsu.io.StrongStrings.IValidator
 {
 	public override bool IsValid() { return base.IsValid() && Validate<TValidator, ktsu.io.StrongStrings.NoValidator, ktsu.io.StrongStrings.NoValidator, ktsu.io.StrongStrings.NoValidator, ktsu.io.StrongStrings.NoValidator>(value: this); }
 }
 
-public abstract record <#= derivedClassName #><TDerived, TValidator1, TValidator2> : <#= baseClassName #><TDerived>
-	where TDerived : <#= derivedClassName #><TDerived, TValidator1, TValidator2>
+public abstract record {{ derivedClassName }}<TDerived, TValidator1, TValidator2> : {{ baseClassName }}<TDerived>
+	where TDerived : {{ derivedClassName }}<TDerived, TValidator1, TValidator2>
 	where TValidator1 : ktsu.io.StrongStrings.IValidator
 	where TValidator2 : ktsu.io.StrongStrings.IValidator
 {
 	public override bool IsValid() { return base.IsValid() && Validate<TValidator1, TValidator2, ktsu.io.StrongStrings.NoValidator, ktsu.io.StrongStrings.NoValidator, ktsu.io.StrongStrings.NoValidator>(value: this); }
 }
 
-public abstract record <#= derivedClassName #><TDerived, TValidator1, TValidator2, TValidator3> : <#= baseClassName #><TDerived>
-	where TDerived : <#= derivedClassName #><TDerived, TValidator1, TValidator2, TValidator3>
+public abstract record {{ derivedClassName }}<TDerived, TValidator1, TValidator2, TValidator3> : {{ baseClassName }}<TDerived>
+	where TDerived : {{ derivedClassName }}<TDerived, TValidator1, TValidator2, TValidator3>
 	where TValidator1 : ktsu.io.StrongStrings.IValidator
 	where TValidator2 : ktsu.io.StrongStrings.IValidator
 	where TValidator3 : ktsu.io.StrongStrings.IValidator
@@ -33,8 +31,8 @@ public abstract record <#= derivedClassName #><TDerived, TValidator1, TValidator
 	public override bool IsValid() { return base.IsValid() && Validate<TValidator1, TValidator2, TValidator3, ktsu.io.StrongStrings.NoValidator, ktsu.io.StrongStrings.NoValidator>(value: this); }
 }
 
-public abstract record <#= derivedClassName #><TDerived, TValidator1, TValidator2, TValidator3, TValidator4> : <#= baseClassName #><TDerived>
-	where TDerived : <#= derivedClassName #><TDerived, TValidator1, TValidator2, TValidator3, TValidator4>
+public abstract record {{ derivedClassName }}<TDerived, TValidator1, TValidator2, TValidator3, TValidator4> : {{ baseClassName }}<TDerived>
+	where TDerived : {{ derivedClassName }}<TDerived, TValidator1, TValidator2, TValidator3, TValidator4>
 	where TValidator1 : ktsu.io.StrongStrings.IValidator
 	where TValidator2 : ktsu.io.StrongStrings.IValidator
 	where TValidator3 : ktsu.io.StrongStrings.IValidator
@@ -43,8 +41,8 @@ public abstract record <#= derivedClassName #><TDerived, TValidator1, TValidator
 	public override bool IsValid() { return base.IsValid() && Validate<TValidator1, TValidator2, TValidator3, TValidator4, ktsu.io.StrongStrings.NoValidator>(value: this); }
 }
 
-public abstract record <#= derivedClassName #><TDerived, TValidator1, TValidator2, TValidator3, TValidator4, TValidator5> : <#= baseClassName #><TDerived>
-	where TDerived : <#= derivedClassName #><TDerived, TValidator1, TValidator2, TValidator3, TValidator4, TValidator5>
+public abstract record {{ derivedClassName }}<TDerived, TValidator1, TValidator2, TValidator3, TValidator4, TValidator5> : {{ baseClassName }}<TDerived>
+	where TDerived : {{ derivedClassName }}<TDerived, TValidator1, TValidator2, TValidator3, TValidator4, TValidator5>
 	where TValidator1 : ktsu.io.StrongStrings.IValidator
 	where TValidator2 : ktsu.io.StrongStrings.IValidator
 	where TValidator3 : ktsu.io.StrongStrings.IValidator
@@ -53,7 +51,5 @@ public abstract record <#= derivedClassName #><TDerived, TValidator1, TValidator
 {
 	public override bool IsValid() { return base.IsValid() && Validate<TValidator1, TValidator2, TValidator3, TValidator4, TValidator5>(value: this); }
 }
-<#+
-SaveTemplateOutput($"{derivedClassName}.Generated.cs");
+""";
 }
-#>

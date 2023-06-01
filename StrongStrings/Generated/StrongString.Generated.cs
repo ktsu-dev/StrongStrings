@@ -1,3 +1,4 @@
+// Generated code. Do not modify.
 namespace ktsu.io.StrongStrings;
 
 public sealed record StrongString

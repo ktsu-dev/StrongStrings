@@ -194,11 +194,11 @@ public abstract record AnyStrongString : IString
 
 	public bool IsEmpty() { return IsEmpty(strongString: this); }
 
-	public static bool IsEmpty(AnyStrongString? strongString) { return strongString?.Length == 0; }
+	private static bool IsEmpty(IString? strongString) { return strongString?.Length == 0; }
 
 	public virtual bool IsValid() { return IsValid(strongString: this); }
 
-	public static bool IsValid(AnyStrongString? strongString) { return strongString?.WeakString is not null; }
+	private static bool IsValid(IString? strongString) { return strongString?.WeakString is not null; }
 
 	// IComparable implementation
 	public static bool operator <(AnyStrongString? left, AnyStrongString? right) { return left is null ? right is not null : left.CompareTo(value: (string)right) < 0; }

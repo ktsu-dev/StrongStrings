@@ -1,16 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Generated\StrongString.log">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>StrongString.tt</DependentUpon>
-    </None>
-    <None Update="Generated\StrongString.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>StrongString.log</LastGenOutput>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Update="Generated\StrongStringAbstract.Generated.cs">
+            <DependentUpon>StrongString.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Generated\StrongString.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>StrongString.tt</DependentUpon>
+        </Compile>
+        <Compile Update="Generated\StrongString.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>StrongString.tt</DependentUpon>
+        </Compile>
+        <Compile Update="Generated\StrongString.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>StrongString.tt</DependentUpon>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="Generated\StrongString.tt">
+            <LastGenOutput>StrongString.cs</LastGenOutput>
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+    </ItemGroup>
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+        <Exec Command="dotnet-script GenerateCode.csx"/>
+    </Target>
 </Project>
