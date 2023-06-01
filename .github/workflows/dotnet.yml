@@ -26,10 +26,12 @@ jobs:
         source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
       env:
         NUGET_AUTH_TOKEN: ${{ github.token }}
+    - name: Install dotnet-script
+      run: dotnet tool install -g dotnet-script
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Debug
+      run: dotnet build --no-restore --configuration Debug
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Create the package for github
