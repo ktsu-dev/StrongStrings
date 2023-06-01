@@ -31,9 +31,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Debug
+      run: dotnet build --no-restore --configuration Debug --verbosity detailed
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity detailed
     - name: Create the package for github
       run: dotnet pack --configuration Release --output . -p:RepositoryUrl=${{ github.repositoryUrl }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=${{ github.server_url }}/${{ github.repository }}
     - name: Publish the package to github
