@@ -216,10 +216,7 @@ public abstract record AnyStrongString : IString
 	public static TDest FromCharArray<TDest>(char[]? value)
 		where TDest : AnyStrongString
 	{
-		if (value is null)
-		{
-			throw new ArgumentNullException(paramName: nameof(value));
-		}
+		ArgumentNullException.ThrowIfNull(value);
 
 		return FromString<TDest>(value: new string(value: value));
 	}
@@ -234,10 +231,7 @@ public abstract record AnyStrongString : IString
 	private static TDest FromStringInternal<TDest>(string? value)
 		where TDest : AnyStrongString
 	{
-		if (value is null)
-		{
-			throw new ArgumentNullException(paramName: nameof(value));
-		}
+		ArgumentNullException.ThrowIfNull(value);
 
 		Type typeOfTDest = typeof(TDest);
 		var newInstance = (TDest)Activator.CreateInstance(type: typeOfTDest)!;
