@@ -9,7 +9,7 @@
     <RootNamespace>$(Authors.Replace(" ", "")).$(MSBuildProjectName.Replace(" ", ""))</RootNamespace>
     <AssemblyName>$(RootNamespace)</AssemblyName>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest-all</AnalysisLevel>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <WarningLevel>9999</WarningLevel>

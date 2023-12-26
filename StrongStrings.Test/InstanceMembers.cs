@@ -17,9 +17,9 @@ public class InstanceMembers
 	[TestMethod]
 	public void TestGetHashCode()
 	{
-		StrongStringDerivedClass strongString0 = StrongYeet;
-		StrongStringDerivedClass strongString1 = StrongYeet;
-		StrongStringDerivedClass strongString2 = StrongYote;
+		var strongString0 = StrongYeet;
+		var strongString1 = StrongYeet;
+		var strongString2 = StrongYote;
 		Assert.AreEqual(expected: strongString0.GetHashCode(), actual: strongString1.GetHashCode());
 		Assert.AreNotEqual(notExpected: strongString0.GetHashCode(), actual: strongString2.GetHashCode());
 	}
@@ -27,7 +27,7 @@ public class InstanceMembers
 	[TestMethod]
 	public void TestToString()
 	{
-		StrongStringDerivedClass strongString = StrongYeet;
+		var strongString = StrongYeet;
 		Assert.AreEqual(expected: Yeet, actual: strongString.ToString());
 		Assert.AreNotEqual(notExpected: Yote, actual: strongString.ToString());
 	}
@@ -63,20 +63,20 @@ public class InstanceMembers
 	[TestMethod]
 	public void TestEquals()
 	{
-		StrongStringDerivedClass strongString0 = StrongYeet;
-		StrongStringDerivedClass strongString1 = StrongYeet;
-		StrongStringDerivedClass strongString2 = StrongYote;
+		var strongString0 = StrongYeet;
+		var strongString1 = StrongYeet;
+		var strongString2 = StrongYote;
 		Assert.IsTrue(condition: strongString0.Equals(other: strongString1));
 		Assert.IsFalse(condition: strongString0.Equals(other: strongString2));
 	}
 
 	[TestMethod]
-	public void TestValidateWithNull() { _ = Assert.ThrowsException<ArgumentNullException>(action: () => { _ = ((NonEmptyStrongString)(string?)null).IsValid(); }); }
+	public void TestValidateWithNull() => _ = Assert.ThrowsException<ArgumentNullException>(action: () => { _ = ((NonEmptyStrongString)(string?)null).IsValid(); });
 
 	[TestMethod]
 	public void TestWeakString()
 	{
-		StrongStringDerivedClass strongString = StrongYeet;
+		var strongString = StrongYeet;
 		Assert.AreEqual(expected: Yeet, actual: strongString.WeakString);
 		Assert.AreNotEqual(notExpected: Yote, actual: strongString.WeakString);
 	}
@@ -84,7 +84,7 @@ public class InstanceMembers
 	[TestMethod]
 	public void TestLength()
 	{
-		StrongStringDerivedClass strongString = StrongYeet;
+		var strongString = StrongYeet;
 		Assert.AreEqual(expected: Yeet.Length, actual: strongString.Length);
 		Assert.AreNotEqual(notExpected: 0, actual: strongString.Length);
 	}
@@ -93,7 +93,7 @@ public class InstanceMembers
 	public void TestIsEmpty()
 	{
 		var strongStringEmpty = (StrongStringDerivedClass)string.Empty;
-		StrongStringDerivedClass strongStringYeet = StrongYeet;
+		var strongStringYeet = StrongYeet;
 		Assert.IsTrue(condition: strongStringEmpty.IsEmpty());
 		Assert.IsFalse(condition: strongStringYeet.IsEmpty());
 	}
@@ -101,19 +101,19 @@ public class InstanceMembers
 	[TestMethod]
 	public void TestToUpper()
 	{
-		StrongStringDerivedClass strongString = StrongYeet;
+		var strongString = StrongYeet;
 		Assert.AreEqual(expected: Yeet.ToUpper(), actual: strongString.ToUpper());
 	}
 
 	[TestMethod]
 	public void TestToLower()
 	{
-		StrongStringDerivedClass strongString = StrongYeet;
+		var strongString = StrongYeet;
 		Assert.AreEqual(expected: Yeet.ToLower(), actual: strongString.ToLower());
 	}
 
 	[TestMethod]
-	public void TestIndexer() { Assert.AreEqual(expected: 't', actual: StrongYeet[^1]); }
+	public void TestIndexer() => Assert.AreEqual(expected: 't', actual: StrongYeet[^1]);
 
 	[TestMethod]
 	public void TestRemoveSuffix()
@@ -196,7 +196,7 @@ public class InstanceMembers
 			)
 		);
 
-		Assert.AreEqual(expected: yeetDotJson, actual: yeetDotJson.RemoveSuffix(suffix: (string)null!));
+		Assert.AreEqual(expected: yeetDotJson, actual: yeetDotJson.RemoveSuffix(suffix: null!));
 		Assert.AreEqual(expected: yeetDotJson, actual: yeetDotJson.RemoveSuffix(suffixes: (string[])null!));
 		Assert.AreEqual(expected: yeetDotJson, actual: yeetDotJson.RemoveSuffix(suffixes: (List<StrongStringDerivedClass>)null!));
 		Assert.AreEqual(expected: yeetDotJson, actual: yeetDotJson.RemoveSuffix(suffixes: (IEnumerable<string>)null!));

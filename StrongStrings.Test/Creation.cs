@@ -37,10 +37,10 @@ public class Creation
 	}
 
 	[TestMethod]
-	public void CanExplicitCastToString() { Assert.AreEqual(expected: Yeet, actual: (string)StrongYeet); }
+	public void CanExplicitCastToString() => Assert.AreEqual(expected: Yeet, actual: (string)StrongYeet);
 
 	[TestMethod]
-	public void CanExplicitCastToCharArray() { Assert.IsTrue(condition: ((char[])StrongYeet).SequenceEqual(second: Yeet.ToCharArray())); }
+	public void CanExplicitCastToCharArray() => Assert.IsTrue(condition: ((char[])StrongYeet).SequenceEqual(second: Yeet.ToCharArray()));
 
 	[TestMethod]
 	public void CanImplicitCastToString()
@@ -61,8 +61,8 @@ public class Creation
 	}
 
 	[TestMethod]
-	public void CanExplicitCastFromCharArray() { Assert.AreEqual(expected: StrongYeet, actual: (StrongStringDerivedClass)Yeet.ToCharArray()); }
+	public void CanExplicitCastFromCharArray() => Assert.AreEqual(expected: StrongYeet, actual: (StrongStringDerivedClass)Yeet.ToCharArray());
 
 	[TestMethod]
-	public void CanExplicitCastFromString() { Assert.AreEqual(expected: StrongYeet, actual: (StrongStringDerivedClass)Yeet); }
+	public void CanExplicitCastFromString() => Assert.AreEqual(expected: StrongYeet, actual: (StrongStringDerivedClass)Yeet);
 }

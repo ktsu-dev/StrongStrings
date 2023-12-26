@@ -26,23 +26,15 @@ public record InvalidStrongString5 : StrongStringAbstract<InvalidStrongString5, 
 
 public abstract class TrueValidator : IValidator
 {
-	public static bool IsValid(AnyStrongString? strongString) { return true; }
+	public static bool IsValid(AnyStrongString? strongString) => true;
 }
 
 public abstract class FalseValidator : IValidator
 {
-	public static bool IsValid(AnyStrongString? strongString) { return false; }
+	public static bool IsValid(AnyStrongString? strongString) => false;
 }
 
 public abstract class NonEmptyValidator : IValidator
 {
-	public static bool IsValid(AnyStrongString? strongString)
-	{
-		if (strongString is null)
-		{
-			return false;
-		}
-
-		return !strongString.IsEmpty();
-	}
+	public static bool IsValid(AnyStrongString? strongString) => strongString is not null && !strongString.IsEmpty();
 }

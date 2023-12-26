@@ -25,7 +25,7 @@ using System.Text;
 [DebuggerDisplay(value: $"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public abstract record AnyStrongString : IString
 {
-	public char[] ToCharArray() { return ToCharArray(strongString: this); }
+	public char[] ToCharArray() => ToCharArray(strongString: this);
 
 	// IString implementation
 	public string WeakString { get; init; } = string.Empty;
@@ -34,184 +34,184 @@ public abstract record AnyStrongString : IString
 
 	public char this[int index] => WeakString[index: index];
 
-	public int CompareTo(object? value) { return WeakString.CompareTo(value: value); }
+	public int CompareTo(object? value) => WeakString.CompareTo(value: value);
 
-	public bool Contains(string value) { return WeakString.Contains(value: value); }
+	public bool Contains(string value) => WeakString.Contains(value: value);
 
-	public void CopyTo(int sourceIndex, char[] destination, int destinationIndex, int count) { WeakString.CopyTo(sourceIndex: sourceIndex, destination: destination, destinationIndex: destinationIndex, count: count); }
+	public void CopyTo(int sourceIndex, char[] destination, int destinationIndex, int count) => WeakString.CopyTo(sourceIndex: sourceIndex, destination: destination, destinationIndex: destinationIndex, count: count);
 
-	public bool EndsWith(string value) { return WeakString.EndsWith(value: value); }
+	public bool EndsWith(string value) => WeakString.EndsWith(value: value);
 
-	public bool EndsWith(string value, bool ignoreCase, CultureInfo culture) { return WeakString.EndsWith(value: value, ignoreCase: ignoreCase, culture: culture); }
+	public bool EndsWith(string value, bool ignoreCase, CultureInfo culture) => WeakString.EndsWith(value: value, ignoreCase: ignoreCase, culture: culture);
 
-	public bool EndsWith(string value, StringComparison comparisonType) { return WeakString.EndsWith(value: value, comparisonType: comparisonType); }
+	public bool EndsWith(string value, StringComparison comparisonType) => WeakString.EndsWith(value: value, comparisonType: comparisonType);
 
-	public bool Equals(string value) { return WeakString.Equals(value: value); }
+	public bool Equals(string value) => WeakString.Equals(value: value);
 
-	public bool Equals(string value, StringComparison comparisonType) { return WeakString.Equals(value: value, comparisonType: comparisonType); }
+	public bool Equals(string value, StringComparison comparisonType) => WeakString.Equals(value: value, comparisonType: comparisonType);
 
-	public CharEnumerator GetEnumerator() { return WeakString.GetEnumerator(); }
+	public CharEnumerator GetEnumerator() => WeakString.GetEnumerator();
 
-	public TypeCode GetTypeCode() { return WeakString.GetTypeCode(); }
+	public TypeCode GetTypeCode() => WeakString.GetTypeCode();
 
-	public int IndexOf(char value) { return WeakString.IndexOf(value: value); }
+	public int IndexOf(char value) => WeakString.IndexOf(value: value);
 
-	public int IndexOf(char value, int startIndex) { return WeakString.IndexOf(value: value, startIndex: startIndex); }
+	public int IndexOf(char value, int startIndex) => WeakString.IndexOf(value: value, startIndex: startIndex);
 
-	public int IndexOf(char value, int startIndex, int count) { return WeakString.IndexOf(value: value, startIndex: startIndex, count: count); }
+	public int IndexOf(char value, int startIndex, int count) => WeakString.IndexOf(value: value, startIndex: startIndex, count: count);
 
-	public int IndexOf(string value) { return WeakString.IndexOf(value: value); }
+	public int IndexOf(string value) => WeakString.IndexOf(value: value);
 
-	public int IndexOf(string value, int startIndex) { return WeakString.IndexOf(value: value, startIndex: startIndex); }
+	public int IndexOf(string value, int startIndex) => WeakString.IndexOf(value: value, startIndex: startIndex);
 
-	public int IndexOf(string value, int startIndex, int count) { return WeakString.IndexOf(value: value, startIndex: startIndex, count: count); }
+	public int IndexOf(string value, int startIndex, int count) => WeakString.IndexOf(value: value, startIndex: startIndex, count: count);
 
-	public int IndexOf(string value, int startIndex, int count, StringComparison comparisonType) { return WeakString.IndexOf(value: value, startIndex: startIndex, count: count, comparisonType: comparisonType); }
+	public int IndexOf(string value, int startIndex, int count, StringComparison comparisonType) => WeakString.IndexOf(value: value, startIndex: startIndex, count: count, comparisonType: comparisonType);
 
-	public int IndexOf(string value, int startIndex, StringComparison comparisonType) { return WeakString.IndexOf(value: value, startIndex: startIndex, comparisonType: comparisonType); }
+	public int IndexOf(string value, int startIndex, StringComparison comparisonType) => WeakString.IndexOf(value: value, startIndex: startIndex, comparisonType: comparisonType);
 
-	public int IndexOf(string value, StringComparison comparisonType) { return WeakString.IndexOf(value: value, comparisonType: comparisonType); }
+	public int IndexOf(string value, StringComparison comparisonType) => WeakString.IndexOf(value: value, comparisonType: comparisonType);
 
-	public int IndexOfAny(char[] anyOf) { return WeakString.IndexOfAny(anyOf: anyOf); }
+	public int IndexOfAny(char[] anyOf) => WeakString.IndexOfAny(anyOf: anyOf);
 
-	public int IndexOfAny(char[] anyOf, int startIndex) { return WeakString.IndexOfAny(anyOf: anyOf, startIndex: startIndex); }
+	public int IndexOfAny(char[] anyOf, int startIndex) => WeakString.IndexOfAny(anyOf: anyOf, startIndex: startIndex);
 
-	public int IndexOfAny(char[] anyOf, int startIndex, int count) { return WeakString.IndexOfAny(anyOf: anyOf, startIndex: startIndex, count: count); }
+	public int IndexOfAny(char[] anyOf, int startIndex, int count) => WeakString.IndexOfAny(anyOf: anyOf, startIndex: startIndex, count: count);
 
-	public string Insert(int startIndex, string value) { return WeakString.Insert(startIndex: startIndex, value: value); }
+	public string Insert(int startIndex, string value) => WeakString.Insert(startIndex: startIndex, value: value);
 
-	public bool IsNormalized() { return WeakString.IsNormalized(); }
+	public bool IsNormalized() => WeakString.IsNormalized();
 
-	public bool IsNormalized(NormalizationForm normalizationForm) { return WeakString.IsNormalized(normalizationForm: normalizationForm); }
+	public bool IsNormalized(NormalizationForm normalizationForm) => WeakString.IsNormalized(normalizationForm: normalizationForm);
 
-	public int LastIndexOf(char value) { return WeakString.LastIndexOf(value: value); }
+	public int LastIndexOf(char value) => WeakString.LastIndexOf(value: value);
 
-	public int LastIndexOf(char value, int startIndex) { return WeakString.LastIndexOf(value: value, startIndex: startIndex); }
+	public int LastIndexOf(char value, int startIndex) => WeakString.LastIndexOf(value: value, startIndex: startIndex);
 
-	public int LastIndexOf(char value, int startIndex, int count) { return WeakString.LastIndexOf(value: value, startIndex: startIndex, count: count); }
+	public int LastIndexOf(char value, int startIndex, int count) => WeakString.LastIndexOf(value: value, startIndex: startIndex, count: count);
 
-	public int LastIndexOf(string value) { return WeakString.LastIndexOf(value: value); }
+	public int LastIndexOf(string value) => WeakString.LastIndexOf(value: value);
 
-	public int LastIndexOf(string value, int startIndex) { return WeakString.LastIndexOf(value: value, startIndex: startIndex); }
+	public int LastIndexOf(string value, int startIndex) => WeakString.LastIndexOf(value: value, startIndex: startIndex);
 
-	public int LastIndexOf(string value, int startIndex, int count) { return WeakString.LastIndexOf(value: value, startIndex: startIndex, count: count); }
+	public int LastIndexOf(string value, int startIndex, int count) => WeakString.LastIndexOf(value: value, startIndex: startIndex, count: count);
 
-	public int LastIndexOf(string value, int startIndex, int count, StringComparison comparisonType) { return WeakString.LastIndexOf(value: value, startIndex: startIndex, count: count, comparisonType: comparisonType); }
+	public int LastIndexOf(string value, int startIndex, int count, StringComparison comparisonType) => WeakString.LastIndexOf(value: value, startIndex: startIndex, count: count, comparisonType: comparisonType);
 
-	public int LastIndexOf(string value, int startIndex, StringComparison comparisonType) { return WeakString.LastIndexOf(value: value, startIndex: startIndex, comparisonType: comparisonType); }
+	public int LastIndexOf(string value, int startIndex, StringComparison comparisonType) => WeakString.LastIndexOf(value: value, startIndex: startIndex, comparisonType: comparisonType);
 
-	public int LastIndexOf(string value, StringComparison comparisonType) { return WeakString.LastIndexOf(value: value, comparisonType: comparisonType); }
+	public int LastIndexOf(string value, StringComparison comparisonType) => WeakString.LastIndexOf(value: value, comparisonType: comparisonType);
 
-	public int LastIndexOfAny(char[] anyOf) { return WeakString.LastIndexOfAny(anyOf: anyOf); }
+	public int LastIndexOfAny(char[] anyOf) => WeakString.LastIndexOfAny(anyOf: anyOf);
 
-	public int LastIndexOfAny(char[] anyOf, int startIndex) { return WeakString.LastIndexOfAny(anyOf: anyOf, startIndex: startIndex); }
+	public int LastIndexOfAny(char[] anyOf, int startIndex) => WeakString.LastIndexOfAny(anyOf: anyOf, startIndex: startIndex);
 
-	public int LastIndexOfAny(char[] anyOf, int startIndex, int count) { return WeakString.LastIndexOfAny(anyOf: anyOf, startIndex: startIndex, count: count); }
+	public int LastIndexOfAny(char[] anyOf, int startIndex, int count) => WeakString.LastIndexOfAny(anyOf: anyOf, startIndex: startIndex, count: count);
 
-	public string Normalize() { return WeakString.Normalize(); }
+	public string Normalize() => WeakString.Normalize();
 
-	public string Normalize(NormalizationForm normalizationForm) { return WeakString.Normalize(normalizationForm: normalizationForm); }
+	public string Normalize(NormalizationForm normalizationForm) => WeakString.Normalize(normalizationForm: normalizationForm);
 
-	public string PadLeft(int totalWidth) { return WeakString.PadLeft(totalWidth: totalWidth); }
+	public string PadLeft(int totalWidth) => WeakString.PadLeft(totalWidth: totalWidth);
 
-	public string PadLeft(int totalWidth, char paddingChar) { return WeakString.PadLeft(totalWidth: totalWidth, paddingChar: paddingChar); }
+	public string PadLeft(int totalWidth, char paddingChar) => WeakString.PadLeft(totalWidth: totalWidth, paddingChar: paddingChar);
 
-	public string PadRight(int totalWidth) { return WeakString.PadRight(totalWidth: totalWidth); }
+	public string PadRight(int totalWidth) => WeakString.PadRight(totalWidth: totalWidth);
 
-	public string PadRight(int totalWidth, char paddingChar) { return WeakString.PadRight(totalWidth: totalWidth, paddingChar: paddingChar); }
+	public string PadRight(int totalWidth, char paddingChar) => WeakString.PadRight(totalWidth: totalWidth, paddingChar: paddingChar);
 
-	public string Remove(int startIndex) { return WeakString.Remove(startIndex: startIndex); }
+	public string Remove(int startIndex) => WeakString.Remove(startIndex: startIndex);
 
-	public string Remove(int startIndex, int count) { return WeakString.Remove(startIndex: startIndex, count: count); }
+	public string Remove(int startIndex, int count) => WeakString.Remove(startIndex: startIndex, count: count);
 
-	public string Replace(char oldChar, char newChar) { return WeakString.Replace(oldChar: oldChar, newChar: newChar); }
+	public string Replace(char oldChar, char newChar) => WeakString.Replace(oldChar: oldChar, newChar: newChar);
 
-	public string Replace(string oldValue, string newValue) { return WeakString.Replace(oldValue: oldValue, newValue: newValue); }
+	public string Replace(string oldValue, string newValue) => WeakString.Replace(oldValue: oldValue, newValue: newValue);
 
-	public string[] Split(char[] separator, int count) { return WeakString.Split(separator: separator, count: count); }
+	public string[] Split(char[] separator, int count) => WeakString.Split(separator: separator, count: count);
 
-	public string[] Split(char[] separator, int count, StringSplitOptions options) { return WeakString.Split(separator: separator, count: count, options: options); }
+	public string[] Split(char[] separator, int count, StringSplitOptions options) => WeakString.Split(separator: separator, count: count, options: options);
 
-	public string[] Split(char[] separator, StringSplitOptions options) { return WeakString.Split(separator: separator, options: options); }
+	public string[] Split(char[] separator, StringSplitOptions options) => WeakString.Split(separator: separator, options: options);
 
-	public string[] Split(params char[] separator) { return WeakString.Split(separator: separator); }
+	public string[] Split(params char[] separator) => WeakString.Split(separator: separator);
 
-	public string[] Split(string[] separator, int count, StringSplitOptions options) { return WeakString.Split(separator: separator, count: count, options: options); }
+	public string[] Split(string[] separator, int count, StringSplitOptions options) => WeakString.Split(separator: separator, count: count, options: options);
 
-	public string[] Split(string[] separator, StringSplitOptions options) { return WeakString.Split(separator: separator, options: options); }
+	public string[] Split(string[] separator, StringSplitOptions options) => WeakString.Split(separator: separator, options: options);
 
-	public bool StartsWith(string value) { return WeakString.StartsWith(value: value); }
+	public bool StartsWith(string value) => WeakString.StartsWith(value: value);
 
-	public bool StartsWith(string value, bool ignoreCase, CultureInfo culture) { return WeakString.StartsWith(value: value, ignoreCase: ignoreCase, culture: culture); }
+	public bool StartsWith(string value, bool ignoreCase, CultureInfo culture) => WeakString.StartsWith(value: value, ignoreCase: ignoreCase, culture: culture);
 
-	public bool StartsWith(string value, StringComparison comparisonType) { return WeakString.StartsWith(value: value, comparisonType: comparisonType); }
+	public bool StartsWith(string value, StringComparison comparisonType) => WeakString.StartsWith(value: value, comparisonType: comparisonType);
 
-	public string Substring(int startIndex) { return WeakString[startIndex..]; }
+	public string Substring(int startIndex) => WeakString[startIndex..];
 
-	public string Substring(int startIndex, int length) { return WeakString.Substring(startIndex: startIndex, length: length); }
+	public string Substring(int startIndex, int length) => WeakString.Substring(startIndex: startIndex, length: length);
 
-	public char[] ToCharArray(int startIndex, int length) { return WeakString.ToCharArray(startIndex: startIndex, length: length); }
+	public char[] ToCharArray(int startIndex, int length) => WeakString.ToCharArray(startIndex: startIndex, length: length);
 
-	public string ToLower() { return WeakString.ToLower(); }
+	public string ToLower() => WeakString.ToLower();
 
-	public string ToLower(CultureInfo culture) { return WeakString.ToLower(culture: culture); }
+	public string ToLower(CultureInfo culture) => WeakString.ToLower(culture: culture);
 
-	public string ToLowerInvariant() { return WeakString.ToLowerInvariant(); }
+	public string ToLowerInvariant() => WeakString.ToLowerInvariant();
 
-	public sealed override string ToString() { return WeakString; }
+	public sealed override string ToString() => WeakString;
 
-	public string ToString(IFormatProvider provider) { return WeakString.ToString(provider: provider); }
+	public string ToString(IFormatProvider provider) => WeakString.ToString(provider: provider);
 
-	public string ToUpper() { return WeakString.ToUpper(); }
+	public string ToUpper() => WeakString.ToUpper();
 
-	public string ToUpper(CultureInfo culture) { return WeakString.ToUpper(culture: culture); }
+	public string ToUpper(CultureInfo culture) => WeakString.ToUpper(culture: culture);
 
-	public string ToUpperInvariant() { return WeakString.ToUpperInvariant(); }
+	public string ToUpperInvariant() => WeakString.ToUpperInvariant();
 
-	public string Trim() { return WeakString.Trim(); }
+	public string Trim() => WeakString.Trim();
 
-	public string Trim(params char[] trimChars) { return WeakString.Trim(trimChars: trimChars); }
+	public string Trim(params char[] trimChars) => WeakString.Trim(trimChars: trimChars);
 
-	public string TrimEnd(params char[] trimChars) { return WeakString.TrimEnd(trimChars: trimChars); }
+	public string TrimEnd(params char[] trimChars) => WeakString.TrimEnd(trimChars: trimChars);
 
-	public string TrimStart(params char[] trimChars) { return WeakString.TrimStart(trimChars: trimChars); }
+	public string TrimStart(params char[] trimChars) => WeakString.TrimStart(trimChars: trimChars);
 
-	public int CompareTo(IString? other) { return WeakString.CompareTo(strB: other?.WeakString); }
+	public int CompareTo(IString? other) => WeakString.CompareTo(strB: other?.WeakString);
 
-	IEnumerator<char> IEnumerable<char>.GetEnumerator() { return ((IEnumerable<char>)WeakString).GetEnumerator(); }
+	IEnumerator<char> IEnumerable<char>.GetEnumerator() => ((IEnumerable<char>)WeakString).GetEnumerator();
 
-	IEnumerator IEnumerable.GetEnumerator() { return ((IEnumerable)WeakString).GetEnumerator(); }
+	IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)WeakString).GetEnumerator();
 
-	public bool Contains(string value, StringComparison comparisonType) { return WeakString.Contains(value: value, comparisonType: comparisonType); }
+	public bool Contains(string value, StringComparison comparisonType) => WeakString.Contains(value: value, comparisonType: comparisonType);
 
 	// AnyStrongString implementation
 	[ExcludeFromCodeCoverage(Justification = "DebuggerDisplay")]
-	protected string GetDebuggerDisplay() { return $"({GetType().Name})\"{ToString()}\""; }
+	protected string GetDebuggerDisplay() => $"({GetType().Name})\"{ToString()}\"";
 
-	public static string ToString(AnyStrongString? strongString) { return strongString?.WeakString ?? string.Empty; }
+	public static string ToString(AnyStrongString? strongString) => strongString?.WeakString ?? string.Empty;
 
-	public static char[] ToCharArray(AnyStrongString? strongString) { return strongString?.WeakString.ToCharArray() ?? Array.Empty<char>(); }
+	public static char[] ToCharArray(AnyStrongString? strongString) => strongString?.WeakString.ToCharArray() ?? Array.Empty<char>();
 
-	public bool IsEmpty() { return IsEmpty(strongString: this); }
+	public bool IsEmpty() => IsEmpty(strongString: this);
 
-	private static bool IsEmpty(IString? strongString) { return strongString?.Length == 0; }
+	private static bool IsEmpty(IString? strongString) => strongString?.Length == 0;
 
-	public virtual bool IsValid() { return IsValid(strongString: this); }
+	public virtual bool IsValid() => IsValid(strongString: this);
 
-	private static bool IsValid(IString? strongString) { return strongString?.WeakString is not null; }
+	private static bool IsValid(IString? strongString) => strongString?.WeakString is not null;
 
 	// IComparable implementation
-	public static bool operator <(AnyStrongString? left, AnyStrongString? right) { return left is null ? right is not null : left.CompareTo(value: (string)right) < 0; }
+	public static bool operator <(AnyStrongString? left, AnyStrongString? right) => left is null ? right is not null : left.CompareTo(value: (string)right) < 0;
 
-	public static bool operator <=(AnyStrongString? left, AnyStrongString? right) { return left is null || left.CompareTo(value: (string)right) <= 0; }
+	public static bool operator <=(AnyStrongString? left, AnyStrongString? right) => left is null || left.CompareTo(value: (string)right) <= 0;
 
-	public static bool operator >(AnyStrongString? left, AnyStrongString? right) { return left is not null && left.CompareTo(value: (string)right) > 0; }
+	public static bool operator >(AnyStrongString? left, AnyStrongString? right) => left is not null && left.CompareTo(value: (string)right) > 0;
 
-	public static bool operator >=(AnyStrongString? left, AnyStrongString? right) { return left is null ? right is null : left.CompareTo(value: (string)right) >= 0; }
+	public static bool operator >=(AnyStrongString? left, AnyStrongString? right) => left is null ? right is null : left.CompareTo(value: (string)right) >= 0;
 
-	public static implicit operator char[](AnyStrongString? value) { return value?.ToCharArray() ?? Array.Empty<char>(); }
+	public static implicit operator char[](AnyStrongString? value) => value?.ToCharArray() ?? Array.Empty<char>();
 
-	public static implicit operator string(AnyStrongString? value) { return value?.ToString() ?? string.Empty; }
+	public static implicit operator string(AnyStrongString? value) => value?.ToString() ?? string.Empty;
 
 	public static TDest FromCharArray<TDest>(char[]? value)
 		where TDest : AnyStrongString
@@ -233,7 +233,7 @@ public abstract record AnyStrongString : IString
 	{
 		ArgumentNullException.ThrowIfNull(value);
 
-		Type typeOfTDest = typeof(TDest);
+		var typeOfTDest = typeof(TDest);
 		var newInstance = (TDest)Activator.CreateInstance(type: typeOfTDest)!;
 		typeOfTDest.GetProperty(name: nameof(WeakString))!.SetValue(obj: newInstance, value: value);
 		return newInstance;
@@ -242,12 +242,9 @@ public abstract record AnyStrongString : IString
 	private static TDest PerformValidation<TDest>(TDest? value)
 		where TDest : AnyStrongString
 	{
-		if (value != null && value.IsValid())
-		{
-			return value;
-		}
-
-		throw new FormatException(message: $"Cannot convert \"{value}\" to {typeof(TDest).Name}");
+		return value != null && value.IsValid()
+			? value
+			: throw new FormatException(message: $"Cannot convert \"{value}\" to {typeof(TDest).Name}");
 	}
 
 	protected static bool Validate<TValidator1, TValidator2, TValidator3, TValidator4, TValidator5>(AnyStrongString? value)
@@ -255,19 +252,16 @@ public abstract record AnyStrongString : IString
 		where TValidator2 : IValidator
 		where TValidator3 : IValidator
 		where TValidator4 : IValidator
-		where TValidator5 : IValidator
-	{
-		return value is not null && IsValid(strongString: value) && TValidator1.IsValid(strongString: value) && TValidator2.IsValid(strongString: value) && TValidator3.IsValid(strongString: value) && TValidator4.IsValid(strongString: value) && TValidator5.IsValid(strongString: value);
-	}
+		where TValidator5 : IValidator => value is not null && IsValid(strongString: value) && TValidator1.IsValid(strongString: value) && TValidator2.IsValid(strongString: value) && TValidator3.IsValid(strongString: value) && TValidator4.IsValid(strongString: value) && TValidator5.IsValid(strongString: value);
 }
 
 [SuppressMessage(category: "Usage", checkId: "CA2225:Operator overloads have named alternates", Justification = "The base class already has these")]
 public abstract record AnyStrongString<TDerived> : AnyStrongString
 	where TDerived : AnyStrongString<TDerived>
 {
-	public static explicit operator AnyStrongString<TDerived>(char[]? value) { return FromCharArray<TDerived>(value: value); }
+	public static explicit operator AnyStrongString<TDerived>(char[]? value) => FromCharArray<TDerived>(value: value);
 
-	public static explicit operator AnyStrongString<TDerived>(string? value) { return FromString<TDerived>(value: value); }
+	public static explicit operator AnyStrongString<TDerived>(string? value) => FromString<TDerived>(value: value);
 
 	/// <summary>
 	///     Returns the FileName with a single suffix removed from the end, or the original FileName if the suffix was not
@@ -277,12 +271,9 @@ public abstract record AnyStrongString<TDerived> : AnyStrongString
 	/// <returns>The FileName with a suffix removed from the end, or the original FileName if the suffix was not found</returns>
 	public TDerived RemoveSuffix(string? suffix)
 	{
-		if (suffix is not null)
-		{
-			return (TDerived)(EndsWith(value: suffix, comparisonType: StringComparison.Ordinal) ? WeakString[..^suffix.Length] : this);
-		}
-
-		return (TDerived)this;
+		return suffix is not null
+			? (TDerived)(EndsWith(value: suffix, comparisonType: StringComparison.Ordinal) ? WeakString[..^suffix.Length] : this)
+			: (TDerived)this;
 	}
 
 	/// <summary>
@@ -291,15 +282,7 @@ public abstract record AnyStrongString<TDerived> : AnyStrongString
 	/// </summary>
 	/// <param name="suffixes">The suffixes to attempt to remove from the end of the FileName</param>
 	/// <returns>The FileName with a suffix removed from the end, or the original FileName if the suffix was not found</returns>
-	public TDerived RemoveSuffix(params string[]? suffixes)
-	{
-		if (suffixes is not null)
-		{
-			return RemoveSuffix(suffixes: suffixes.ToList());
-		}
-
-		return (TDerived)this;
-	}
+	public TDerived RemoveSuffix(params string[]? suffixes) => suffixes is not null ? RemoveSuffix(suffixes: suffixes.ToList()) : (TDerived)this;
 
 	/// <summary>
 	///     Returns the FileName with the first suffix found removed from the end, or the original FileName if no suffix was
@@ -316,7 +299,7 @@ public abstract record AnyStrongString<TDerived> : AnyStrongString
 
 		foreach (string suffix in suffixes)
 		{
-			TDerived result = RemoveSuffix(suffix: suffix);
+			var result = RemoveSuffix(suffix: suffix);
 			if (result != this)
 			{
 				return result;
@@ -332,13 +315,5 @@ public abstract record AnyStrongString<TDerived> : AnyStrongString
 	/// </summary>
 	/// <param name="suffixes">The suffixes to attempt to remove from the end of the FileName</param>
 	/// <returns>The FileName with a suffix removed from the end, or the original FileName if the suffix was not found</returns>
-	public TDerived RemoveSuffix(IEnumerable<AnyStrongString>? suffixes)
-	{
-		if (suffixes is not null)
-		{
-			return RemoveSuffix(suffixes: suffixes.Select(selector: s => s.WeakString));
-		}
-
-		return (TDerived)this;
-	}
+	public TDerived RemoveSuffix(IEnumerable<AnyStrongString>? suffixes) => suffixes is not null ? RemoveSuffix(suffixes: suffixes.Select(selector: s => s.WeakString)) : (TDerived)this;
 }

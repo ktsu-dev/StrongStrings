@@ -11,9 +11,9 @@ public class Operators
 	[TestMethod]
 	public void TestOpEquals()
 	{
-		StrongStringDerivedClass strongString0 = StrongYeet;
-		StrongStringDerivedClass strongString1 = StrongYeet;
-		StrongStringDerivedClass strongString2 = StrongYote;
+		var strongString0 = StrongYeet;
+		var strongString1 = StrongYeet;
+		var strongString2 = StrongYote;
 		Assert.IsTrue(condition: strongString0 == strongString1);
 		Assert.IsFalse(condition: strongString0 == strongString2);
 	}
@@ -21,9 +21,9 @@ public class Operators
 	[TestMethod]
 	public void TestOpNotEquals()
 	{
-		StrongStringDerivedClass strongString0 = StrongYeet;
-		StrongStringDerivedClass strongString1 = StrongYeet;
-		StrongStringDerivedClass strongString2 = StrongYote;
+		var strongString0 = StrongYeet;
+		var strongString1 = StrongYeet;
+		var strongString2 = StrongYote;
 		Assert.IsFalse(condition: strongString0 != strongString1);
 		Assert.IsTrue(condition: strongString0 != strongString2);
 	}
@@ -73,5 +73,5 @@ public class Operators
 	}
 
 	[TestMethod]
-	public void TestOpAdd() { Assert.AreEqual(expected: StrongYeet + StrongYote, actual: Yeet + Yote); }
+	public void TestOpAdd() => Assert.AreEqual(expected: StrongYeet + StrongYote, actual: Yeet + Yote);
 }

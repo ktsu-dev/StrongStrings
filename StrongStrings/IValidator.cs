@@ -7,5 +7,5 @@ public interface IValidator
 
 public abstract record NoValidator : IValidator
 {
-	public static bool IsValid(AnyStrongString? strongString) { return true; }
+	public static bool IsValid(AnyStrongString? strongString) => true;
 }
