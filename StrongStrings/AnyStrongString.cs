@@ -21,8 +21,10 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
+using System.Text.Json.Serialization;
 
 [DebuggerDisplay(value: $"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
+[JsonConverter(typeof(StrongStringJsonConvertorFactory))]
 public abstract record AnyStrongString : IString
 {
 	public char[] ToCharArray() => ToCharArray(strongString: this);
