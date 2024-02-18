@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <VersionPrefix>1.0.0</VersionPrefix>
-        <VersionSuffix>alpha.5</VersionSuffix>
+        <VersionSuffix>alpha.6</VersionSuffix>
         <PackageDescription>A library offering strongly typed strings which must be explicitly cast when being assigned from other types, but otherwise behave like normal strings.</PackageDescription>
     </PropertyGroup>
 </Project>
