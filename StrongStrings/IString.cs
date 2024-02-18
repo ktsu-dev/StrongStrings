@@ -1,6 +1,3 @@
-// ReSharper disable UnusedMemberInSuper.Global
-// ReSharper disable UnusedMember.Global
-
 namespace ktsu.io.StrongStrings;
 
 using System.Globalization;

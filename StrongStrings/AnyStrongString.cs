@@ -1,11 +1,3 @@
-// ReSharper disable StringCompareToIsCultureSpecific
-// ReSharper disable StringIndexOfIsCultureSpecific.1
-// ReSharper disable StringIndexOfIsCultureSpecific.2
-// ReSharper disable StringIndexOfIsCultureSpecific.3
-// ReSharper disable StringLastIndexOfIsCultureSpecific.1
-// ReSharper disable StringLastIndexOfIsCultureSpecific.2
-// ReSharper disable StringLastIndexOfIsCultureSpecific.3
-
 #pragma warning disable CA1305
 #pragma warning disable CA1308
 #pragma warning disable CA1304
@@ -21,10 +13,8 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
-using System.Text.Json.Serialization;
 
 [DebuggerDisplay(value: $"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
-[JsonConverter(typeof(StrongStringJsonConvertorFactory))]
 public abstract record AnyStrongString : IString
 {
 	public char[] ToCharArray() => ToCharArray(strongString: this);
@@ -264,58 +254,4 @@ public abstract record AnyStrongString<TDerived> : AnyStrongString
 	public static explicit operator AnyStrongString<TDerived>(char[]? value) => FromCharArray<TDerived>(value: value);
 
 	public static explicit operator AnyStrongString<TDerived>(string? value) => FromString<TDerived>(value: value);
-
-	/// <summary>
-	///     Returns the FileName with a single suffix removed from the end, or the original FileName if the suffix was not
-	///     found
-	/// </summary>
-	/// <param name="suffix">The suffix to remove from the end of the FileName</param>
-	/// <returns>The FileName with a suffix removed from the end, or the original FileName if the suffix was not found</returns>
-	public TDerived RemoveSuffix(string? suffix)
-	{
-		return suffix is not null
-			? (TDerived)(EndsWith(value: suffix, comparisonType: StringComparison.Ordinal) ? WeakString[..^suffix.Length] : this)
-			: (TDerived)this;
-	}
-
-	/// <summary>
-	///     Returns the FileName with the first suffix found removed from the end, or the original FileName if no suffix was
-	///     not found
-	/// </summary>
-	/// <param name="suffixes">The suffixes to attempt to remove from the end of the FileName</param>
-	/// <returns>The FileName with a suffix removed from the end, or the original FileName if the suffix was not found</returns>
-	public TDerived RemoveSuffix(params string[]? suffixes) => suffixes is not null ? RemoveSuffix(suffixes: suffixes.ToList()) : (TDerived)this;
-
-	/// <summary>
-	///     Returns the FileName with the first suffix found removed from the end, or the original FileName if no suffix was
-	///     not found
-	/// </summary>
-	/// <param name="suffixes">The suffixes to attempt to remove from the end of the FileName</param>
-	/// <returns>The FileName with a suffix removed from the end, or the original FileName if the suffix was not found</returns>
-	public TDerived RemoveSuffix(IEnumerable<string>? suffixes)
-	{
-		if (suffixes is null)
-		{
-			return (TDerived)this;
-		}
-
-		foreach (string suffix in suffixes)
-		{
-			var result = RemoveSuffix(suffix: suffix);
-			if (result != this)
-			{
-				return result;
-			}
-		}
-
-		return (TDerived)this;
-	}
-
-	/// <summary>
-	///     Returns the FileName with the first suffix found removed from the end, or the original FileName if no suffix was
-	///     not found
-	/// </summary>
-	/// <param name="suffixes">The suffixes to attempt to remove from the end of the FileName</param>
-	/// <returns>The FileName with a suffix removed from the end, or the original FileName if the suffix was not found</returns>
-	public TDerived RemoveSuffix(IEnumerable<AnyStrongString>? suffixes) => suffixes is not null ? RemoveSuffix(suffixes: suffixes.Select(selector: s => s.WeakString)) : (TDerived)this;
 }
