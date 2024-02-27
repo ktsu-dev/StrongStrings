@@ -1,6 +1,7 @@
-﻿public string MakeConcrete(string fileNamespace, string abstractClassName, string concreteClassName)
+public string MakeConcrete(string fileNamespace, string abstractClassName, string concreteClassName)
 {
     return $$"""
+#pragma warning disable CS1591
 // Generated code. Do not modify.
 namespace {{ fileNamespace}};
 

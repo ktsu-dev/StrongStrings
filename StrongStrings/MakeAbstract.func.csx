@@ -1,6 +1,7 @@
-﻿public string MakeAbstract(string fileNamespace, string baseClassName, string derivedClassName)
+public string MakeAbstract(string fileNamespace, string baseClassName, string derivedClassName)
 {
     return $$"""
+#pragma warning disable CS1591
 // Generated code. Do not modify.
 namespace {{ fileNamespace }};
 
