@@ -1,0 +1,1 @@
+A library offering strongly typed strings which must be explicitly cast when being assigned from other types, but otherwise behave like normal strings.
