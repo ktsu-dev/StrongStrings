@@ -27,7 +27,7 @@ jobs:
         dotnet-version: 7.0.x
     - name: Read VERSION file
       id: getversion
-      run: echo "::set-output name=version::$(cat VERSION)"
+      run: echo "{version}={$(cat VERSION)}" >> "$GITHUB_OUTPUT"
     - name: Install dotnet-script
       run: dotnet tool install -g dotnet-script
     - name: Restore dependencies
