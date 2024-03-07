@@ -39,3 +39,32 @@ public class MyDemoClass
 	}
 }
 ```
+
+## Validation
+You can provide custom validators which will throw an exception at runtime to help you catch data errors.
+
+Implement the `ktsu.io.StrongStrings.IValidator` interface and provide it as a generic parameter when deriving your class:
+
+```csharp
+public abstract class StartsWithHttp : IValidator
+{
+	public static bool IsValid(AnyStrongString? strongString)
+	{
+		ArgumentNullException.ThrowIfNull(strongString);
+
+		return strongString.StartsWith("http", StringComparison.InvariantCultureIgnoreCase);
+	}
+}
+
+public abstract class EndsWithDotCom : IValidator
+{
+	public static bool IsValid(AnyStrongString? strongString)
+	{
+		ArgumentNullException.ThrowIfNull(strongString);
+
+		return strongString.EndsWith(".com", StringComparison.InvariantCultureIgnoreCase);
+	}
+}
+
+public record class MyValidatedString : StrongStringAbstract<MyValidatedString, StartsWithHttp, EndsWithDotCom> { }
+```
