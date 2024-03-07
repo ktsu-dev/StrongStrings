@@ -41,7 +41,7 @@ public class MyDemoClass
 ```
 
 ## Validation
-You can provide custom validators which will throw an exception at runtime to help you catch data errors.
+You can provide custom validators which will throw a `FormatException` at runtime to help you catch data errors.
 
 Implement the `ktsu.io.StrongStrings.IValidator` interface and provide it as a generic parameter when deriving your class:
 
