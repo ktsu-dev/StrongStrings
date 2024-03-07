@@ -1,6 +1,6 @@
 # StrongStrings
 
-A library that provides a transparent wrapper around dotnet strings but gives you strong typing, compile time feedback, and runtime validation.
+A library that provides a transparent wrapper around system strings and gives you strong typing, compile time feedback, and runtime validation.
 
 The intention is to be able to provide usage context and validation to naked strings in a similar way that Enums do for integers.
 
