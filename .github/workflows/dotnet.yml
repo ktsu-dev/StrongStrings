@@ -34,8 +34,11 @@ jobs:
         echo "VERSION=$(< VERSION)" >> "$GITHUB_ENV";
         echo "AUTHORS=$(< AUTHORS)" >> "$GITHUB_ENV";
         echo "DESCRIPTION=$(< DESCRIPTION)" >> "$GITHUB_ENV";
+    - name: Make the build command
+      run: |
+        echo "BUILD=dotnet pack --include-source --configuration Release --output . -p:SymbolPackageFormat=snupkg -p:Version=\'$VERSION\' -p:Authors=\'$AUTHORS\' -p:PackageDescription=\'$DESCRIPTION\' -p:PackageLicenseFile=LICENSE -p:PackageReadmeFile=README.md -p:RepositoryUrl=${{ github.server_url }}/${{ github.repository }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=${{ github.server_url }}/${{ github.repository }} -p:IncludeContentInPack=true" >> "$GITHUB_ENV";
     - name: Build the package for nuget
-      run: dotnet pack --include-source --configuration Release --output . -p:SymbolPackageFormat=snupkg -p:Version=\'$VERSION\' -p:Authors=\'$AUTHORS\' -p:PackageDescription=\'$DESCRIPTION\' -p:PackageLicenseFile=LICENSE -p:PackageReadmeFile=README.md -p:RepositoryUrl=${{ github.server_url }}/${{ github.repository }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=${{ github.server_url }}/${{ github.repository }} -p:IncludeContentInPack=true
+      run: $BUILD
     - name: Publish the package to nuget
       if: ${{ github.event_name == 'push' }}
       run: dotnet nuget push *.nupkg --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
