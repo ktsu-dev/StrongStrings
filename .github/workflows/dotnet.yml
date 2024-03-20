@@ -29,8 +29,13 @@ jobs:
       run: dotnet tool install -g dotnet-script
     - name: Run Tests
       run: dotnet test
+    - name: Read variables from file
+      run: |
+        echo "VERSION=$(cat VERSION)" >> "$GITHUB_ENV";
+        echo "AUTHORS=$(cat AUTHORS)" >> "$GITHUB_ENV";
+        echo "DESCRIPTION=$(cat DESCRIPTION)" >> "$GITHUB_ENV";
     - name: Build the package for nuget
-      run: dotnet pack --include-source --configuration Release --output . -p:SymbolPackageFormat=snupkg -p:Version=$(cat VERSION) -p:Authors=$(cat AUTHORS) -p:PackageLicenseFile=LICENSE -p:PackageReadmeFile=README.md -p:PackageDescription=$([MSBuild]::Escape($(cat DESCRIPTION))) -p:RepositoryUrl=${{ github.server_url }}/${{ github.repository }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=${{ github.server_url }}/${{ github.repository }} -p:IncludeContentInPack=true
+      run: dotnet pack --include-source --configuration Release --output . -p:SymbolPackageFormat=snupkg -p:Version=$([MSBuild]::Escape("$VERSION") -p:Authors=$([MSBuild]::Escape("$AUTHORS") -p:PackageLicenseFile=LICENSE -p:PackageReadmeFile=README.md -p:PackageDescription=$([MSBuild]::Escape("$DESCRIPTION")) -p:RepositoryUrl=${{ github.server_url }}/${{ github.repository }} -p:RepositoryCommit=${{ github.sha }} -p:PackageProjectUrl=${{ github.server_url }}/${{ github.repository }} -p:IncludeContentInPack=true
     - name: Publish the package to nuget
       if: ${{ github.event_name == 'push' }}
       run: dotnet nuget push *.nupkg --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
