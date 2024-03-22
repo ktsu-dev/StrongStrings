@@ -5,6 +5,7 @@
 #pragma warning disable CA1309
 #pragma warning disable CA1307
 #pragma warning disable CA1310
+#pragma warning disable CS1591
 
 namespace ktsu.io.StrongStrings;
 

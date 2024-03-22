@@ -1,3 +1,5 @@
+#pragma warning disable CS1591
+
 namespace ktsu.io.StrongStrings.Test;
 
 public record StrongStringDerivedClass : StrongStringAbstract<StrongStringDerivedClass>;
