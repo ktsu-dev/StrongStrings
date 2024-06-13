@@ -183,7 +183,7 @@ public abstract record AnyStrongString : IString
 
 	public static string ToString(AnyStrongString? strongString) => strongString?.WeakString ?? string.Empty;
 
-	public static char[] ToCharArray(AnyStrongString? strongString) => strongString?.WeakString.ToCharArray() ?? Array.Empty<char>();
+	public static char[] ToCharArray(AnyStrongString? strongString) => strongString?.WeakString.ToCharArray() ?? [];
 
 	public bool IsEmpty() => IsEmpty(strongString: this);
 
@@ -202,7 +202,7 @@ public abstract record AnyStrongString : IString
 
 	public static bool operator >=(AnyStrongString? left, AnyStrongString? right) => left is null ? right is null : left.CompareTo(value: (string)right) >= 0;
 
-	public static implicit operator char[](AnyStrongString? value) => value?.ToCharArray() ?? Array.Empty<char>();
+	public static implicit operator char[](AnyStrongString? value) => value?.ToCharArray() ?? [];
 
 	public static implicit operator string(AnyStrongString? value) => value?.ToString() ?? string.Empty;
 
