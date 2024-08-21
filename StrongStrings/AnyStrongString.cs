@@ -255,4 +255,7 @@ public abstract record AnyStrongString<TDerived> : AnyStrongString
 	public static explicit operator AnyStrongString<TDerived>(char[]? value) => FromCharArray<TDerived>(value: value);
 
 	public static explicit operator AnyStrongString<TDerived>(string? value) => FromString<TDerived>(value: value);
+
+	public TDerived WithPrefix(string prefix) => (TDerived)$"{prefix}{this}";
+	public TDerived WithSuffix(string suffix) => (TDerived)$"{this}{suffix}";
 }

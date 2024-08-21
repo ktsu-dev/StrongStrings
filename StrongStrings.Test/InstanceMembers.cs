@@ -156,4 +156,16 @@ public class InstanceMembers
 		Assert.IsTrue(condition: StrongYote.CompareTo(other: StrongYeet) > 0);
 		Assert.IsTrue(condition: StrongYeet.CompareTo(other: StrongYeet) == 0);
 	}
+
+	[TestMethod]
+	public void TestWithPrefix()
+	{
+		Assert.IsTrue(condition: StrongYeet.WithPrefix(Yote) == $"{Yote}{Yeet}");
+	}
+
+	[TestMethod]
+	public void TestWithSuffix()
+	{
+		Assert.IsTrue(condition: StrongYeet.WithSuffix(Yote) == $"{Yeet}{Yote}");
+	}
 }
