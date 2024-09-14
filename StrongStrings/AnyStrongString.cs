@@ -7,7 +7,7 @@
 #pragma warning disable CA1310
 #pragma warning disable CS1591
 
-namespace ktsu.io.StrongStrings;
+namespace ktsu.StrongStrings;
 
 using System.Collections;
 using System.Diagnostics;

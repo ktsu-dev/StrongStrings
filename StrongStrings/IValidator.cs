@@ -1,6 +1,6 @@
 #pragma warning disable CS1591
 
-namespace ktsu.io.StrongStrings;
+namespace ktsu.StrongStrings;
 
 public interface IValidator
 {
