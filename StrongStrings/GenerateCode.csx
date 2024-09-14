@@ -1,3 +1,3 @@
-﻿#load "MakeClasses.func.csx"
+#load "MakeClasses.func.csx"
 
-MakeClasses("ktsu.io.StrongStrings", "AnyStrongString", "StrongString");
+MakeClasses("ktsu.StrongStrings", "AnyStrongString", "StrongString");
