@@ -67,4 +67,7 @@ public class Creation
 
 	[TestMethod]
 	public void CanExplicitCastFromString() => Assert.AreEqual(expected: StrongYeet, actual: (StrongStringDerivedClass)Yeet);
+
+	[TestMethod]
+	public void CanConvert() => _ = StrongYeet.As<NonEmptyStrongString>();
 }
