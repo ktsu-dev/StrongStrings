@@ -18,6 +18,10 @@ using System.Text;
 [DebuggerDisplay(value: $"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public abstract record AnyStrongString : IString
 {
+	public TDest As<TDest>()
+		where TDest : AnyStrongString
+		=> FromString<TDest>(WeakString);
+
 	public char[] ToCharArray() => ToCharArray(strongString: this);
 
 	// IString implementation
