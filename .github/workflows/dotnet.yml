@@ -1,7 +1,8 @@
-name: Build and Test
+name: .NET Library Pipeline
 
 on:
-  push:
+  schedule:
+    - cron: "0 * * * *"
   pull_request:
     
 permissions:
@@ -9,6 +10,6 @@ permissions:
   contents: write
   
 jobs:
-  build-dotnet-library:
-    uses: ktsu-dev/workflows/.github/workflows/build-dotnet-library.yml@main
+  dotnet-library:
+    uses: ktsu-dev/workflows/.github/workflows/dotnet-library/pipeline.yml@main
     secrets: inherit
