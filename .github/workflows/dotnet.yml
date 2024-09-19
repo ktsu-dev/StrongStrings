@@ -11,5 +11,5 @@ permissions:
   
 jobs:
   dotnet-library:
-    uses: ktsu-dev/workflows/.github/workflows/dotnet-library/pipeline.yml@main
+    uses: ktsu-dev/workflows/.github/workflows/dotnet-library.yml@main
     secrets: inherit
