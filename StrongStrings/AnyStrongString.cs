@@ -20,7 +20,11 @@ public abstract record AnyStrongString : IString
 {
 	public TDest As<TDest>()
 		where TDest : AnyStrongString
-		=> FromString<TDest>(WeakString);
+		=> FromString<TDest>(WeakString).MakeCanonical<TDest>();
+
+	protected virtual TDest MakeCanonical<TDest>()
+		where TDest : AnyStrongString
+		=> (TDest)this;
 
 	public char[] ToCharArray() => ToCharArray(strongString: this);
 
@@ -262,4 +266,7 @@ public abstract record AnyStrongString<TDerived> : AnyStrongString
 
 	public TDerived WithPrefix(string prefix) => (TDerived)$"{prefix}{this}";
 	public TDerived WithSuffix(string suffix) => (TDerived)$"{this}{suffix}";
+
+	protected override TDest MakeCanonical<TDest>()
+		=> base.MakeCanonical<TDest>();
 }
