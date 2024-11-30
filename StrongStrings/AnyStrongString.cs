@@ -20,11 +20,10 @@ public abstract record AnyStrongString : IString
 {
 	public TDest As<TDest>()
 		where TDest : AnyStrongString
-		=> FromString<TDest>(WeakString).MakeCanonical<TDest>();
+		=> FromString<TDest>(WeakString);
 
-	protected virtual TDest MakeCanonical<TDest>()
-		where TDest : AnyStrongString
-		=> (TDest)this;
+	protected virtual string MakeCanonical(string input)
+		=> input;
 
 	public char[] ToCharArray() => ToCharArray(strongString: this);
 
@@ -236,7 +235,7 @@ public abstract record AnyStrongString : IString
 
 		var typeOfTDest = typeof(TDest);
 		var newInstance = (TDest)Activator.CreateInstance(type: typeOfTDest)!;
-		typeOfTDest.GetProperty(name: nameof(WeakString))!.SetValue(obj: newInstance, value: value);
+		typeOfTDest.GetProperty(name: nameof(WeakString))!.SetValue(obj: newInstance, value: newInstance.MakeCanonical(value));
 		return newInstance;
 	}
 
@@ -267,6 +266,6 @@ public abstract record AnyStrongString<TDerived> : AnyStrongString
 	public TDerived WithPrefix(string prefix) => (TDerived)$"{prefix}{this}";
 	public TDerived WithSuffix(string suffix) => (TDerived)$"{this}{suffix}";
 
-	protected override TDest MakeCanonical<TDest>()
-		=> base.MakeCanonical<TDest>();
+	protected override string MakeCanonical(string input)
+		=> base.MakeCanonical(input);
 }
