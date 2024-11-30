@@ -6,7 +6,7 @@ The intention is to be able to provide usage context and validation to naked str
 
 ## Usage
 ```csharp
-using ktsu.io.StrongStrings;
+using ktsu.StrongStrings;
 
 // Create a strong type by deriving a record class from StrongStringAbstract<TDerived>:
 public record class MyStrongString : StrongStringAbstract<MyStrongString> { }
@@ -43,7 +43,7 @@ public class MyDemoClass
 ## Validation
 You can provide custom validators which will throw a `FormatException` at runtime to help you catch data errors.
 
-Implement the `ktsu.io.StrongStrings.IValidator` interface and provide it as a generic parameter when deriving your class:
+Implement the `ktsu.StrongStrings.IValidator` interface and provide it as a generic parameter when deriving your class:
 
 ```csharp
 public abstract class StartsWithHttp : IValidator
