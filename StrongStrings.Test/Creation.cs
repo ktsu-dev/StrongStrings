@@ -59,7 +59,7 @@ public class Creation
 
 		StrongStringDerivedClass confidentlyNull = null!;
 		char[] charsNull = confidentlyNull;
-		Assert.IsTrue(condition: charsNull.Length == 0);
+		Assert.AreEqual(0, charsNull.Length);
 	}
 
 	[TestMethod]

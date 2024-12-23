@@ -154,18 +154,18 @@ public class InstanceMembers
 	{
 		Assert.IsTrue(condition: StrongYeet.CompareTo(other: StrongYote) < 0);
 		Assert.IsTrue(condition: StrongYote.CompareTo(other: StrongYeet) > 0);
-		Assert.IsTrue(condition: StrongYeet.CompareTo(other: StrongYeet) == 0);
+		Assert.AreEqual(0, StrongYeet.CompareTo(other: StrongYeet));
 	}
 
 	[TestMethod]
 	public void TestWithPrefix()
 	{
-		Assert.IsTrue(condition: StrongYeet.WithPrefix(Yote) == $"{Yote}{Yeet}");
+		Assert.AreEqual($"{Yote}{Yeet}", StrongYeet.WithPrefix(Yote));
 	}
 
 	[TestMethod]
 	public void TestWithSuffix()
 	{
-		Assert.IsTrue(condition: StrongYeet.WithSuffix(Yote) == $"{Yeet}{Yote}");
+		Assert.AreEqual($"{Yeet}{Yote}", StrongYeet.WithSuffix(Yote));
 	}
 }

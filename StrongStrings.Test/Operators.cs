@@ -11,6 +11,7 @@ public class Operators
 	private static StrongStringDerivedClass StrongYote => (StrongStringDerivedClass)Yote;
 
 	[TestMethod]
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "MSTEST0037:Use proper 'Assert' methods", Justification = "Testing the operators")]
 	public void TestOpEquals()
 	{
 		var strongString0 = StrongYeet;
@@ -21,6 +22,7 @@ public class Operators
 	}
 
 	[TestMethod]
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "MSTEST0037:Use proper 'Assert' methods", Justification = "Testing the operators")]
 	public void TestOpNotEquals()
 	{
 		var strongString0 = StrongYeet;
@@ -75,5 +77,5 @@ public class Operators
 	}
 
 	[TestMethod]
-	public void TestOpAdd() => Assert.AreEqual(expected: StrongYeet + StrongYote, actual: Yeet + Yote);
+	public void TestOpAdd() => Assert.AreEqual(Yeet + Yote, StrongYeet + StrongYote);
 }

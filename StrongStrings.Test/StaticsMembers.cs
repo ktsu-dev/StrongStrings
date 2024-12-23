@@ -13,7 +13,7 @@ public class StaticsMembers
 	{
 		Assert.IsTrue(condition: AnyStrongString.ToCharArray(strongString: StrongYeet).SequenceEqual(second: Yeet.ToCharArray()));
 		Assert.IsTrue(condition: StrongYeet.ToCharArray().SequenceEqual(second: Yeet.ToCharArray()));
-		Assert.IsTrue(condition: AnyStrongString.ToCharArray(strongString: null!).Length == 0);
+		Assert.AreEqual(0, AnyStrongString.ToCharArray(strongString: null!).Length);
 	}
 
 	[TestMethod]
@@ -27,7 +27,7 @@ public class StaticsMembers
 	public void TestToString()
 	{
 		Assert.AreEqual(expected: Yeet, actual: AnyStrongString.ToString(strongString: StrongYeet));
-		Assert.IsTrue(condition: AnyStrongString.ToString(strongString: null!).Length == 0);
+		Assert.AreEqual(0, AnyStrongString.ToString(strongString: null!).Length);
 	}
 
 	[TestMethod]
