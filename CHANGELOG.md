@@ -2,15 +2,6 @@
 
 Changes since v1.2.25:
 
-- Add automation scripts for metadata management and versioning ([@matt-edmondson](https://github.com/matt-edmondson))
-- Add conditional build arguments for dotnet build command ([@matt-edmondson](https://github.com/matt-edmondson))
-- Refactor build argument assignment in dotnet.yml for clarity ([@matt-edmondson](https://github.com/matt-edmondson))
-- Renamed metadata files ([@matt-edmondson](https://github.com/matt-edmondson))
-
-## v1.2.26 (patch)
-
-Changes since v1.2.25:
-
 - Add conditional build arguments for dotnet build command ([@matt-edmondson](https://github.com/matt-edmondson))
 - Renamed metadata files ([@matt-edmondson](https://github.com/matt-edmondson))
 
