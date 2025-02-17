@@ -1,3 +1,22 @@
+## v1.3.0 (minor)
+
+Changes since v1.2.0:
+
+- Add automation scripts for metadata management and versioning ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add conditional build arguments for dotnet build command ([@matt-edmondson](https://github.com/matt-edmondson))
+- Apply new editorconfig ([@matt-edmondson](https://github.com/matt-edmondson))
+- Change build schedule to nightly and on push ([@matt-edmondson](https://github.com/matt-edmondson))
+- Fix concurrency and run every 5 mins ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor AnyStrongString with MakeCanonical method ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor assertions and add suppress warnings ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor build argument assignment in dotnet.yml for clarity ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor MakeCanonical and As methods in AnyStrongString ([@matt-edmondson](https://github.com/matt-edmondson))
+- Renamed metadata files ([@matt-edmondson](https://github.com/matt-edmondson))
+- Replace LICENSE file with LICENSE.md and update copyright information ([@matt-edmondson](https://github.com/matt-edmondson))
+- Suppress CA1859 warning and re-indent PreBuild target ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update dotnet.yml ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update namespace from ktsu.io.StrongStrings to ktsu.StrongStrings ([@matt-edmondson](https://github.com/matt-edmondson))
+
 ## v1.2.26 (patch)
 
 Changes since v1.2.25:
