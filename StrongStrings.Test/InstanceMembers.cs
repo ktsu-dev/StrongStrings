@@ -73,7 +73,7 @@ public class InstanceMembers
 	}
 
 	[TestMethod]
-	public void TestValidateWithNull() => _ = Assert.ThrowsException<ArgumentNullException>(action: () => { _ = ((NonEmptyStrongString)(string?)null).IsValid(); });
+	public void TestValidateWithNull() => _ = Assert.ThrowsException<ArgumentNullException>(action: () => _ = ((NonEmptyStrongString)(string?)null).IsValid());
 
 	[TestMethod]
 	public void TestWeakString()

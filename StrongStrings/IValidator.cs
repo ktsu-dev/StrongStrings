@@ -4,7 +4,7 @@ namespace ktsu.StrongStrings;
 
 public interface IValidator
 {
-	static abstract bool IsValid(AnyStrongString? strongString);
+	public static abstract bool IsValid(AnyStrongString? strongString);
 }
 
 public abstract record NoValidator : IValidator

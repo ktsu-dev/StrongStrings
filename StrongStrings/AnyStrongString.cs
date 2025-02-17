@@ -120,7 +120,7 @@ public abstract record AnyStrongString : IString
 
 	public string PadRight(int totalWidth, char paddingChar) => WeakString.PadRight(totalWidth: totalWidth, paddingChar: paddingChar);
 
-	public string Remove(int startIndex) => WeakString.Remove(startIndex: startIndex);
+	public string Remove(int startIndex) => WeakString[..startIndex];
 
 	public string Remove(int startIndex, int count) => WeakString.Remove(startIndex: startIndex, count: count);
 
