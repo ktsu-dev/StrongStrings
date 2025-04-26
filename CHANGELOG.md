@@ -1,3 +1,9 @@
+## v1.4.1 (patch)
+
+Changes since v1.4.0:
+
+- Update README to match standard template format ([@matt-edmondson](https://github.com/matt-edmondson))
+
 ## v1.4.0 (minor)
 
 Changes since v1.3.0:
