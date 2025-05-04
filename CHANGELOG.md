@@ -1,3 +1,9 @@
+## v1.4.2 (patch)
+
+Changes since v1.4.1:
+
+- Update project SDK references in StrongStrings and StrongStrings.Test ([@matt-edmondson](https://github.com/matt-edmondson))
+
 ## v1.4.1 (patch)
 
 Changes since v1.4.0:
