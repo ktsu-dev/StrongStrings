@@ -1,3 +1,7 @@
+// Copyright (c) ktsu.dev
+// All rights reserved.
+// Licensed under the MIT license.
+
 #pragma warning disable CA1305
 #pragma warning disable CA1308
 #pragma warning disable CA1304
