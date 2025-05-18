@@ -1,6 +1,6 @@
 MIT License
 
-https://github.com/ktsu-dev/ktsu-dev/StrongStrings
+https://github.com/ktsu-dev/StrongStrings
 
 Copyright (c) 2023-2025 ktsu-dev
 
